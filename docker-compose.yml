@@ -17,7 +17,7 @@ services:
 
   phpmyadmin:
     container_name: phpmyadmin
-    image: phpmyadmin:5.2.0-fpm-alpine
+    image: phpmyadmin:5.2.0
     restart: always
     links:
       - database
