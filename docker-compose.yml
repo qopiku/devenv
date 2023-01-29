@@ -1,39 +1,6 @@
 version: '3.8'
 
 services:
-  database:
-    container_name: database
-    image: mariadb:10.3
-    restart: always
-    volumes:
-      - ./mysql:/var/lib/mysql:rw
-    environment:
-      - MARIADB_ROOT_HOST=%
-      - MARIADB_ROOT_PASSWORD=${MARIADB_PASSWORD}
-    networks:
-      - sooluh
-    ports:
-      - 3306:3306
-
-  phpmyadmin:
-    container_name: phpmyadmin
-    image: phpmyadmin:5.2.0
-    restart: always
-    links:
-      - database
-    depends_on:
-      - database
-    environment:
-      - PMA_HOST=database
-      - MAX_EXECUTION_TIME=${MAX_EXECUTION_TIME}
-      - MEMORY_LIMIT=${MEMORY_LIMIT}
-      - UPLOAD_LIMIT=${UPLOAD_LIMIT}
-      - HIDE_PHP_VERSION=${HIDE_PHP_VERSION}
-    networks:
-      - sooluh
-    ports:
-      - 8082:80
-
   redis:
     container_name: redis
     image: redis:7.0-alpine
